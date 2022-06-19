@@ -1,0 +1,64 @@
+<div class="course">
+    <div class="course_image"><img [src]=x.img style="width: 300px; height:150px;" alt="courses">
+    </div>
+    <div class="course_body">
+        <h3 class="course_title"><a href="course.html">{{x.coursName}}</a></h3>
+        <div class="course_teacher">Mr.</div>
+        <div class="course_text">
+            <p>{{x.coursInfo}}</p>
+        </div>
+    </div>
+    <div class="course_footer">
+        <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+            <div class="course_info">
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                <span> {{x.coursPlaces}} Student</span>
+            </div>
+            <div class="course_info">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <span>{{x.coursDate}}</span>
+            </div>
+            <div class="course_price ml-auto">${{x.coursPrice}}</div>$
+        </div>
+    </div>
+</div>
+<button *ngIf="headerUser" (click)="addToBasket(x._id,x.coursPlaces,x.coursDate)" class="btn  ml-2 ">                                        
+    <i class="fa fa-graduation-cap "  style="color: green;" ><b>reserve</b> </i>  
+  </button>
+<button class="btn btn-warning ml-2" *ngIf="isStudents" (click)="goToDisplay(x._id)">students</button>
+<div class="text-danger">{{message}}</div>
+<div class="course big-table">
+
+    <table class="table custom-table " *ngIf="isDisplay">
+        <thead>
+            <tr>
+                <th></th>
+                <th>First name</th>
+                <th>Last name</th>
+
+                <!-- <th>pwd</th> -->
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- t: objet // teams: tableau d objet -->
+            <tr *ngFor="let t of students    ">
+
+                <!-- variable {{}} -->
+                <td></td>
+                <td>{{t.firstName}}</td>
+
+
+                <td>{{t.lastName}}</td>
+
+                <!-- <td>{{t.password |custumPassword}}</td> -->
+            </tr>
+
+
+
+        </tbody>
+    </table>
+
+
+</div>

@@ -1,0 +1,82 @@
+<!-- Contact Map -->
+<div class="courses">
+
+    <div class="section_background parallax-window" data-parallax="scroll" data-image-src="assets/images/courses_background.jpg" data-speed="0.8"></div>
+    <div class=" container">
+
+        <app-banner [childVariables]="parentVariables"></app-banner>
+        <div class="row courses_row">
+            <div class="contact_form col-6  ">
+                <div class="contact_info_title">{{y}}</div>
+                <form class="comment_form" [formGroup]="addEventForm">
+
+                    <div>
+                        <div class="form_title"> Name:</div>
+                        <input type="text" class="comment_input" placeholder="Event Name" formControlName="eventName">
+                        <div *ngIf="addEventForm.controls['eventName'].invalid && (addEventForm.controls['eventName'].dirty || addEventForm.controls['eventName'].touched) ">
+                            <div *ngIf="addEventForm.controls['eventName'].errors.required" class="text-danger">
+                                Event Name is required
+                            </div>
+                            <div *ngIf="addEventForm.controls['eventName'].errors.minlength" class="text-danger">
+                                Event Name must have at least 3 carachters
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form_title">Description:</div>
+                        <input type="text" class="comment_input" placeholder="Description" formControlName="eventDescription">
+                        <div *ngIf="addEventForm.controls['eventDescription'].invalid && (addEventForm.controls['eventDescription'].dirty || addEventForm.controls['eventDescription'].touched) ">
+                            <div *ngIf="addEventForm.controls['eventDescription'].errors.required" class="text-danger">
+                                Description is required
+                            </div>
+                            <div *ngIf="addEventForm.controls['eventDescription'].errors.minlength" class="text-danger">
+                                Description must have at least 5 carachters
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form_title">Date:</div>
+                        <input type="datetime-local" class="comment_input" placeholder="date" formControlName="eventDate">
+                        <div *ngIf="addEventForm.controls['eventDate'].invalid && (addEventForm.controls['eventDate'].dirty || addEventForm.controls['eventDate'].touched) ">
+                            <div *ngIf="addEventForm.controls['eventDate'].errors.required" class="text-danger">
+                                Date is required
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <div class="form_title">Places:</div>
+                        <input type="text" class="comment_input" placeholder="place" formControlName="eventPlace">
+                        <div *ngIf="addEventForm.controls['eventPlace'].invalid && (addEventForm.controls['eventPlace'].dirty || addEventForm.controls['eventPlace'].touched) ">
+                            <div *ngIf="addEventForm.controls['eventPlace'].errors.required" class="text-danger">
+                                place is required
+                            </div>
+
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form_title">Price:</div>
+                        <input type="number" class="comment_input" placeholder="price" formControlName="eventPrice">
+                        <div *ngIf="!addEventForm.controls['eventPrice'].valid && (addEventForm.controls['eventPrice'].dirty || addEventForm.controls['eventPrice'].touched) ">
+                            <div *ngIf="addEventForm.controls['eventPrice'].errors.required" class="text-danger">
+                                price is required
+                            </div>
+
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-success" (click)="filePicker.click()">Select image</button>
+                    <div class="mb-3" style="visibility: hidden;">
+                        <input type="file" class="form-control" (change)='onImageSelected($event)' #filePicker>
+                    </div>
+                    <div> <img [src]="imagePreview" *ngIf="imagePreview" height="200px" width="200px">
+                    </div>
+                    <div>
+                        <button type="submit" class="comment_button trans_200" (click)="addOrEdit()">{{parentVariables.variable1}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

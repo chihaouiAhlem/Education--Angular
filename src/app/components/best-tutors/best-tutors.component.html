@@ -1,0 +1,19 @@
+<div class="team">
+    <div class="team_background parallax-window" data-parallax="scroll" data-image-src="assets/images/team_background.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <app-banner [childVariables]="parentVariables"></app-banner>
+
+
+        <div class="row team_row">
+
+            <!-- Team Item -->
+            <div class="col-lg-3 col-md-6 team_col" *ngFor="let m of bestTutor">
+                <app-tutor [T]="m"></app-tutor>
+            </div>
+
+            <!-- Team Item -->
+
+
+        </div>
+    </div>
+</div>

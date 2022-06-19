@@ -1,0 +1,26 @@
+<div class="event event_left">
+    <div class="event_image"><img [src]="R.img" alt=""></div>
+    <div class="event_body d-flex flex-row align-items-start justify-content-start">
+        <div class="event_date">
+            <h4>{{R._id }}</h4>
+            <div class="d-flex flex-column align-items-center justify-content-center trans_200">
+                <div class="event_day trans_200">{{R.eventDate |date:"dd" }}</div>
+                <div class="event_month trans_200">{{R.eventDate |date:"MMMM" }}</div>
+            </div>
+        </div>
+        <div class="event_content">
+            <div class="event_title"><a href="#">{{R.eventName}}</a></div>
+            <div class="event_info_container">
+                <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>{{R.hoursStart}} - {{R.hoursEnd}}</span></div>
+                <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span style="color:red;">Places dispo:{{R.eventPlace}}</span></div>
+                <div class="event_text">
+                    <p>{{R.eventDescription}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button *ngIf="headerUser" (click)="addToBasket(R._id,R.eventPlace,R.eventDate)" class="btn  ml-2 ">                                        
+    <i class="fa fa-graduation-cap "  style="color: green;" ><b>reserve</b> </i>  
+  </button>
+<div class="text-danger">{{message}}</div>

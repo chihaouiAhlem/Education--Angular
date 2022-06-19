@@ -1,0 +1,56 @@
+<div class="container mt-5">
+    <form>
+        <div class="d-flex flex-row align-items-center justify-content-start">
+            <input type="text" name="a" class="  counter_input " [(ngModel)]="searched" placeholder="search name">
+
+
+        </div>
+    </form>
+</div>
+<div class="course">
+
+
+    <table class="table custom-table">
+        <thead>
+            <tr>
+                <th>id</th>
+
+                <th>First name</th>
+                <th>Last name</th>
+                <th>email</th>
+                <th>speciality</th>
+                <th>adress</th>
+                <th>cin</th>
+                <th>pwd</th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- t: objet // teams: tableau d objet -->
+            <tr *ngFor="let t of tutors | filterUser:searched | paginate:{itemsPerPage: 3, currentPage:p}">
+
+                <!-- variable {{}} -->
+                <td>{{t._id}}</td>
+                <td>{{t.firstName}}</td>
+
+
+                <td>{{t.lastName}}</td>
+                <td>{{t.email}}</td>
+                <td>{{t.speciality}}</td>
+                <td>{{t.adress}}</td>
+                <td>{{t.cin}}</td>
+                <td>{{t.password}}</td>
+                <!-- <td><button (click)="goToDisplay(t.id)" class="btn btn-success ml-2">display</button><button class="btn btn-warning ml-2">edit</button><button class="btn btn-danger ml-2">delete</button></td> -->
+            </tr>
+
+
+
+        </tbody>
+    </table>
+
+    <div id="pagination" class="container">
+        <pagination-controls (pageChange)="p=$event"></pagination-controls>
+    </div>
+
+</div>

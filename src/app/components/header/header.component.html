@@ -1,0 +1,196 @@
+<div style="margin-bottom: 100px;">
+    <header class="header">
+        <div class="top_bar">
+            <div class="top_bar_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+                                <ul class="top_bar_contact_list">
+                                    <li>
+                                        <div class="question">Have any questions?</div>
+                                    </li>
+                                    <li *ngIf="headerTutor">
+                                        <div class="question"><a class=" question " routerLink="/contact">Contact SMS</a></div>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                        <div>001-1234-88888</div>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                        <div>Ahlem@gmail.com</div>
+                                    </li>
+                                    <li>
+                                        <div></div>
+                                    </li>
+
+                                </ul>
+                                <div class="top_bar_login ml-auto">
+                                    <div class="login_button" style="width: 200px;" *ngIf="headerAdmin"><a routerLink="admin">Management</a></div>
+                                </div>
+                                <div class="top_bar_login ml-auto">
+                                    <div class="login_button" style="width: 60px;" *ngIf="isdisplayed"><a routerLink="login">Login </a></div>
+                                </div>
+                                <div class="top_bar_login ml-10" *ngIf="isdisplayed">
+                                    <div class="login_button oRWidth" style="width: 20px;"><a routerLink="#">Or </a></div>
+                                </div>
+                                <div class="top_bar_login ml-10" *ngIf="!isdisplayed">
+                                    <div class="login_button oRWidth" style="width: 100px;">
+                                        <a routerLink="#"> <i class='align-center'>Welcome</i></a>
+                                    </div>
+                                </div>
+                                <!-- <div class="top_bar_login ml-10">
+                                    <div class="login_button " style="width: 100px;">
+                                        <a routerLink="signUp">Register </a></div>
+                                </div> -->
+                                <!--  -->
+                                <div class="top_bar_login ml-10">
+                                    <button *ngIf="!isdisplayed" class="login_button signUpBtn " type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <i class=' align-center'>{{users.firstName}} . {{users.lastName}}</i>  
+                                            </button>
+
+                                    <div *ngIf="!isdisplayed" class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                                        <button class="dropdown-item" type="button" (click)="goToProfile(users._id)"><a routerLink="signup"  ><i class="fa fa-table">My profile</i></a></button>
+                                        <button class="dropdown-item" type="button" (click)="goToEdit(users._id)"><a > <i class="fa fa-align-center">Edit Profile</i></a></button>
+                                        <button class="dropdown-item" type="button" (click)="goToEditPass(users._id)"><a ><i class="fa fa-align-center">Edit password</i></a></button>
+                                        <button *ngIf="!isdisplayed" class="dropdown-item" type="button" (click)="logout()"><a ><i class="fa fa-globe">LogOut</i></a></button>
+                                    </div>
+                                    <button *ngIf="isdisplayed" class="login_button signUpBtn " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Registration
+                                </button>
+                                    <div *ngIf="isdisplayed" class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <button class="dropdown-item" type="button"><a routerLink="signup" >Student</a></button>
+                                        <button class="dropdown-item" type="button"><a routerLink="signUpTutor">Tutor</a></button>
+                                        <button class="dropdown-item" type="button"><a routerLink="signUpAdmin">Admin</a></button>
+                                    </div>
+                                </div>
+                                <img *ngIf="!isdisplayed" [src]="users.img" alt="Avatar" class="avatar">
+
+                                <!--  -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header Content -->
+        <div class="header_container" *ngIf="!headerAdmin">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                            <div class="logo_container">
+                                <a routerLink="/welcome">
+                                    <div class="logo_text">Unic<span>at</span></div>
+                                </a>
+                            </div>
+                            <nav class="main_nav_contaner ml-auto">
+                                <ul class="main_nav">
+                                    <li routerLinkActive="active"><a routerLink="/">Home</a></li>
+                                    <li routerLinkActive="active"><a routerLink="events">Events</a></li>
+                                    <li routerLinkActive="active"><a routerLink="courses">Courses</a></li>
+
+                                    <li routerLinkActive="active">
+                                        <a routerLink="tutors">tutors</a>
+                                    </li>
+                                    <li routerLinkActive="active">
+                                        <a routerLink="weather">Weather</a>
+                                    </li>
+                                    <li routerLinkActive="active"><a *ngIf="headerTutor" routerLink="myStudents">My Students</a></li>
+                                    <li routerLinkActive="active">
+                                        <div class="dropdown" *ngIf="headerTutor">
+                                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <a routerLink="admin">  Management Courses</a>
+                                        </button>
+                                            <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                <button class="dropdown-item" type="button"><a routerLink="addEvent" >ADD event</a></button>
+                                                <button class="dropdown-item" type="button"><a routerLink="admin">Events</a></button>
+                                                <button class="dropdown-item" type="button"><a routerLink="admin">Users</a></button>
+                                                <button class="dropdown-item" type="button"><a routerLink="admin">Courses</a></button>
+                                            </div> -->
+                                        </div>
+                                    </li>
+                                    <li routerLinkActive="active"><a routerLink="contact">Contact SMS</a></li>
+                                    <li routerLinkActive="active"><a *ngIf="headerUser" routerLink="mycourses">My Courses</a></li>
+                                    <li routerLinkActive="active"><a *ngIf="headerUser" routerLink="myEvent">My Events</a></li>
+
+                                    <li routerLinkActive="active" *ngIf="headerAdmin">
+                                        <div class="dropdown">
+                                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Admin
+                                        </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                <button class="dropdown-item" type="button"><a routerLink="addEvent" >ADD event</a></button>
+                                                <button class="dropdown-item" type="button"><a routerLink="admin">Events</a></button>
+                                                <button class="dropdown-item" type="button"><a routerLink="admin">Users</a></button>
+                                                <button class="dropdown-item" type="button"><a routerLink="admin">Courses</a></button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="search_button"><i class="fa fa-search" aria-hidden="true"></i></div>
+
+                                <!-- Hamburger -->
+
+                                <div class="shopping_cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+                                <div class="hamburger menu_mm">
+                                    <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+                                </div>
+                            </nav>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header Search Panel -->
+        <div class="header_search_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="header_search_content d-flex flex-row align-items-center justify-content-end">
+                            <form action="#" class="header_search_form">
+                                <input type="search" class="search_input" placeholder="Search" required="required">
+                                <button class="header_search_button d-flex flex-column align-items-center justify-content-center">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu -->
+
+    <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+        <div class="menu_close_container">
+            <div class="menu_close">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="search">
+            <form action="#" class="header_search_form menu_mm">
+                <input type="search" class="search_input menu_mm" placeholder="Search" required="required">
+                <button class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm">
+                <i class="fa fa-search menu_mm" aria-hidden="true"></i>
+            </button>
+            </form>
+        </div>
+        <nav class="menu_nav">
+            <ul class="menu_mm">
+                <li class="menu_mm"><a routerLink=""><span class='material-icons'>Home</span></a></li>
+                <li class="menu_mm"><a href="#">About</a></li>
+                <li class="menu_mm"><a routerLink="allCourses">Courses</a></li>
+                <li class="menu_mm"><a href="#">Blog</a></li>
+                <li class="menu_mm"><a href="#">Page</a></li>
+                <li class="menu_mm"><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

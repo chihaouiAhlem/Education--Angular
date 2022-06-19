@@ -1,0 +1,17 @@
+.big-table {
+    width: 1300px;
+}
+
+.red {
+    color: red;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+    font-style: oblique;
+}
+
+.green {
+    color: green;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+    font-style: oblique;
+}

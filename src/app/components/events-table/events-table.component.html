@@ -1,0 +1,71 @@
+<div class="container mt-5">
+    <form id="home_search_form_3" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between" #formSearch="ngForm" (ngSubmit)="search()">
+        <div class="d-flex flex-row align-items-center justify-content-start">
+            <input type="date" value="2022-12-01" min="2022-01-01" max="2022-12-31" name="a" class="home_search_input  counter_input " [(ngModel)]="obj.dateStart">
+            <input type="date" name="b" class="home_search_input  counter_input " [(ngModel)]="obj.dateEnd">
+
+
+        </div>
+        <button type="submit" class="home_search_button">search</button>
+    </form>
+    <div class="text-danger" *ngIf="isDisplayed">error</div>
+</div>
+
+<div class="course">
+
+
+    <table class=" table custom-table " *ngIf="!isDisplayed">
+
+        <thead>
+            <tr>
+                <th>id</th>
+
+                <th>Event name</th>
+                <th>Date</th>
+                <th>Hours</th>
+                <th>Description</th>
+                <th>Place</th>
+                <th>Price($)</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- t: objet // teams: tableau d objet -->
+            <tr *ngFor="let e of event | custumPrice  ">
+                <!-- variable {{}} -->
+                <td>{{e._id}}</td>
+                <td>{{e.eventName}}</td>
+
+                <td>{{e.eventDate}}</td>
+
+                <td>{{e.hoursStart}}-{{e.hoursEnd}}</td>
+                <td>{{e.eventDescription}}</td>
+                <td>{{e.eventPlace}}</td>
+                <td>{{e.eventPrice}}</td>
+                <td><button (click)="goToDisplay(e._id)" class="btn btn-success ml-2 ">display</button><button class="btn btn-warning ml-2 " (click)="goToEdit(e._id)">edit</button><button class="btn btn-danger ml-2 " (click)="goToDelete(e._id)">delete</button></td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
+    <!--  <div class="card-footer pb-0 pt-3">
+        <jw-pagination [pageSize]="2" [items]="event" (changePage)="onChangePage($event)"></jw-pagination>
+    </div> -->
+    <!-- <div id="pagination" class="container">
+        <pagination-controls (pageChange)="p=$event"></pagination-controls>
+    </div> -->
+
+
+</div>
+
+<div class="container mt-5">
+    <!-- <form id="home_search_form_5" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
+        <div class="d-flex flex-row align-items-center justify-content-start">
+            <input type="date" name="a" class="home_search_input  counter_input " [(ngModel)]="dateMin">
+            <input type="date" name="b" class="home_search_input  counter_input " [(ngModel)]="dateMax">
+
+
+        </div>
+    </form> -->
+</div>

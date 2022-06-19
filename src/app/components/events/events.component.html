@@ -1,0 +1,39 @@
+<!-- <app-search-section></app-search-section> -->
+
+<div class="events">
+    <div class="section_background parallax-window" data-parallax="scroll" data-image-src="assets/images/courses_background.jpg" data-speed="0.8"></div>
+
+    <div class="container">
+
+        <form class="header_search_form menu_mm container " (ngSubmit)="searchhForm.form.valid && searchh()" #searchhForm="ngForm">
+            <input type="date" class="search_input fa fa-search menu_mm " placeholder="Search" name="dateMins" required="required" [(ngModel)]="event.dateMins">
+            <input type="date" class="search_input fa fa-search menu_mm " placeholder="Search" name="dateMaxs" required="required" [(ngModel)]="event.dateMaxs">
+            <button type="submit" class="counter_form_button">search</button>
+
+        </form>
+
+
+        <app-banner [childVariables]="parentVariables"></app-banner>
+        <div class="row events_row" *ngIf="!eventId">
+
+            <!-- Event -->
+            <div class="col-lg-4 event_col " *ngFor="let e of events | custumFilter: dateMins: dateMaxs | paginate:{itemsPerPage: 3, currentPage:p}  ">
+                <app-event [R]="e"></app-event>
+
+            </div>
+        </div>
+        <div class="row events_row" *ngIf="eventId">
+
+            <!-- Event -->
+            <div class="col-lg-6 event_col ">
+                <app-event [R]="findedEvent"></app-event>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+<div id="pagination" class="container">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>

@@ -1,0 +1,94 @@
+<!-- Contact Map -->
+<div class="courses">
+
+    <div class="section_background parallax-window" data-parallax="scroll" data-image-src="assets/images/courses_background.jpg" data-speed="0.8"></div>
+    <div class=" container">
+
+        <app-banner [childVariables]="parentVariables"></app-banner>
+        <div class="row courses_row">
+
+            <div class="contact_form col-6 ">
+                <form name="form" #addCourseForm="ngForm" (ngSubmit)="addCourseForm.form.valid && addOrEdit()" class="comment_form">
+
+                    <div>
+                        <div class="form_title">Name:</div>
+                        <input type="text" class="comment_input" name="coursName" [(ngModel)]="course.coursName" #coursName="ngModel" [ngClass]="{ 'is-invalid': addCourseForm.submitted &&
+            coursName.invalid }" required minlength="3" maxlength="15" />
+                        <div *ngIf="addCourseForm.submitted && coursName.invalid" class="text-danger">
+                            <div *ngIf="coursName.errors.required">name is required
+                            </div>
+                            <div *ngIf="coursName.errors.minlength"> name must be between 3 and 15 characters</div>
+                            <!-- <div *ngIf="cin.errors.maxlenth"> Password must be 8 characters</div> -->
+
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form_title">Price:</div>
+                        <input type="number" class="comment_input" name="coursPrice" [(ngModel)]="course.coursPrice" #coursPrice="ngModel" [ngClass]="{ 'is-invalid': addCourseForm.submitted &&
+            coursPrice.invalid }" required />
+                        <div *ngIf="addCourseForm.submitted && coursPrice.invalid" class="text-danger">
+                            <div *ngIf="coursPrice.errors.required">price is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form_title">Description:</div>
+                        <input type="text" class="comment_input" name="coursInfo" [(ngModel)]="course.coursInfo" #coursInfo="ngModel" [ngClass]="{ 'is-invalid': addCourseForm.submitted &&
+            coursInfo.invalid }" required minlength="5" maxlength="100" />
+                        <div *ngIf="addCourseForm.submitted && coursInfo.invalid" class="invalidfeedback text-danger">
+                            <div *ngIf="coursInfo.errors.required">description is required
+                            </div>
+                            <div *ngIf="coursInfo.errors.minlength">description must be at least 4 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form_title">Places:</div>
+                        <input type="number" class="comment_input" name="coursPlaces" [(ngModel)]="course.coursPlaces" #coursPlaces="ngModel" [ngClass]="{ 'is-invalid': addCourseForm.submitted &&
+            coursPlaces.invalid }" required pattern="^(?=.*[0-9]).{1,3}$" />
+                        <div *ngIf="addCourseForm.submitted && coursPlaces.invalid" class="invalidfeedback text-danger">
+                            <div *ngIf="coursPlaces.errors.required">Places is required
+                            </div>
+                            <div *ngIf="coursPlaces.errors.pattern">error
+                            </div>
+
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form_title">NB Hours</div>
+                        <input type="number" class="comment_input" name="nbrHours" [(ngModel)]="course.nbrHours" #nbrHours="ngModel" [ngClass]="{ 'is-invalid': addCourseForm.submitted &&
+                        nbrHours.invalid }" required pattern="^(?=.*[0-9]).{1,3}$" />
+                        <div *ngIf="addCourseForm.submitted && nbrHours.invalid" class="invalidfeedback text-danger">
+                            <div *ngIf="nbrHours.errors.required"> is required
+                            </div>
+                            <div *ngIf="nbrHours.errors.pattern">error
+                            </div>
+
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form_title">Date:</div>
+                        <input type="datetime-local" class="comment_input" name="coursDate" [(ngModel)]="course.coursDate" #coursDate="ngModel" [ngClass]="{ 'is-invalid': addCourseForm.submitted }" required />
+                        <div *ngIf="addCourseForm.submitted && coursDate.invalid" class="invalidfeedback text-danger">
+                            <div *ngIf="coursDate.errors.required">Date is required
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!--  -->
+                    <button type="button" class="btn btn-success" (click)="filePicker.click()">Select image</button>
+                    <div class="mb-3" style="visibility: hidden;">
+                        <input type="file" class="form-control" (change)='onImageSelected($event)' #filePicker [(ngModel)]="course.image" [ngModelOptions]="{standalone:true}">
+                    </div>
+                    <div> <img [src]="imagePreview" *ngIf="imagePreview" height="200px" width="200px">
+                    </div>
+                    <!--  -->
+                    <div>
+                        <button type="submit" class="comment_button trans_200">{{parentVariables.variable1}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

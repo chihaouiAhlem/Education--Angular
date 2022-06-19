@@ -1,0 +1,16 @@
+.signUpBtn {
+    width: 100px;
+    border: none;
+}
+
+.orWidth {
+    width: 20px;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-top: 10px;
+}

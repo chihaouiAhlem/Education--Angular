@@ -1,0 +1,68 @@
+<div class="courses">
+
+    <div class="section_background parallax-window" data-parallax="scroll" data-image-src="assets/images/courses_background.jpg" data-speed="0.8"></div>
+    <div class=" container">
+
+        <app-banner [childVariables]="parentVariables"></app-banner>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false"> <i class="fa fa-table">Teachers</i> <i class="fa fa-table"></i>
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="headerTutor">
+                <a class="nav-link active" id="homes-tab" data-toggle="tab" href="#homes" role="tab" aria-controls="homes" aria-selected="false"> <i class="fa fa-table">ADD Courses</i> <i class="fa fa-table"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true"> <i class="fa fa-align-center">Courses</i> <i class="fa fa-align-center"></i>
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="headerAdmin">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"> <i class="fa fa-globe">Events</i> <i class="fa fa-globe"></i>
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="headerAdmin">
+                <a class="nav-link" id="contact-tabs" data-toggle="tab" href="#contacts" role="tab" aria-controls="contact" aria-selected="false"> <i class='fas fa-gem yellow-color'>Users</i> <i class='fas fa-gem green-color'></i>
+
+                </a>
+            </li>
+            <!--  -->
+            <li class="nav-item" *ngIf="headerAdmin">
+                <a class="nav-link"> <i class='fas fa-gem yellow-color'></i> <a routerLink="addEvent">ADD event</a> <i class='fas fa-gem green-color'></i>
+
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="headerAdmin">
+                <a class="nav-link" id="contact-tabss" data-toggle="tab" href="#" role="tab" aria-controls="contact" aria-selected="false"> <i class='fas fa-gem green-color'></i>
+
+                </a>
+            </li>
+            <!--  -->
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div *ngIf="headerAdmin" class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                <app-teachers-table></app-teachers-table>
+            </div>
+            <div *ngIf="headerTutor" class="tab-pane fade " id="homes" role="tabpanel" aria-labelledby="home-tab">
+                <app-add-courses></app-add-courses>
+            </div>
+
+
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <app-courses-table></app-courses-table>
+            </div>
+            <div *ngIf="headerAdmin" class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <app-events-table></app-events-table>
+            </div>
+            <div *ngIf="headerAdmin" class="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="contact-tabs">
+                <app-users-table></app-users-table>
+            </div>
+            <div *ngIf="headerAdmin" class="tab-pane fade" id="contactss" role="tabpanel" aria-labelledby="contact-tabs">
+                <app-add-event></app-add-event>
+            </div>
+        </div>
+
+    </div>
+</div>

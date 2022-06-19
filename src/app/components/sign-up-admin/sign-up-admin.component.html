@@ -1,0 +1,147 @@
+<div class=" home">
+    <div class="counter_background" style="background-image:url(assets/images/counter_background.jpg)"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="counter_content">
+                    <h2 class="counter_title">Register Now</h2>
+                    <div class="counter_text">
+                        <p>Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dumy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        </p>
+                    </div>
+
+                    <!-- Milestones -->
+
+                    <div class="milestones d-flex flex-md-row flex-column align-items-center justify-content-between">
+
+                        <!-- Milestone -->
+                        <div class="milestone">
+                            <div class="milestone_counter" data-end-value="15">0</div>
+                            <div class="milestone_text">years</div>
+                        </div>
+
+                        <!-- Milestone -->
+                        <div class="milestone">
+                            <div class="milestone_counter" data-end-value="120" data-sign-after="k">0</div>
+                            <div class="milestone_text">years</div>
+                        </div>
+
+                        <!-- Milestone -->
+                        <div class="milestone">
+                            <div class="milestone_counter" data-end-value="670" data-sign-after="+">0</div>
+                            <div class="milestone_text">years</div>
+                        </div>
+
+                        <!-- Milestone -->
+                        <div class="milestone">
+                            <div class="milestone_counter" data-end-value="320">0</div>
+                            <div class="milestone_text">years</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="counter_form mt-5">
+            <div class="row fill_height">
+                <div class="col fill_height">
+
+                    <form class="counter_form_content d-flex flex-column align-items-center justify-content-center  " [formGroup]="signupForm">
+                        <div class="counter_form_title " style="color:lightskyblue ;">Register now</div>
+
+
+
+                        <input type="text" class="form-control mt-1" placeholder="First name" formControlName="firstName">
+                        <div *ngIf="signupForm.controls['firstName'].invalid && (signupForm.controls['firstName'].dirty || signupForm.controls['firstName'].touched) ">
+                            <div *ngIf="signupForm.controls['firstName'].errors.required" class="text-danger">
+                                First Name is required
+                            </div>
+                            <div *ngIf="signupForm.controls['firstName'].errors.minlength" class="text-danger">
+                                First Name must have at least 3 carachters
+                            </div>
+                        </div>
+                        <input type="text" class="form-control mt-1" placeholder="Last name" formControlName="lastName">
+                        <div *ngIf="signupForm.controls['lastName'].invalid && (signupForm.controls['lastName'].dirty || signupForm.controls['lastName'].touched) ">
+                            <div *ngIf="signupForm.controls['lastName'].errors.required" class="text-danger">
+                                last Name is required
+                            </div>
+                            <div *ngIf="signupForm.controls['lastName'].errors.minlength" class="text-danger">
+                                last Name must have at least 3 carachters
+                            </div>
+                        </div>
+                        <select name="gender_select" formControlName="gender" id="counter_select" class="form-control mt-1 counter_options">
+                            <option selected  name="gender_select" value="">Choose Gender</option>
+                            <option name="b" value="female">Female</option>
+                            <option name="c" value="male">Male</option>
+                        </select>
+                        <div *ngIf="signupForm.controls['gender'].invalid && (signupForm.controls['gender'].dirty || signupForm.controls['gender'].touched) ">
+                            <div *ngIf="signupForm.controls['gender'].errors.required" class="text-danger">
+                                gender is required
+                            </div>
+
+                        </div>
+
+
+
+                        <input type="email" class="form-control mt-1" placeholder="Email" formControlName="email">
+                        <div *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched) ">
+                            <div *ngIf="signupForm.controls['email'].errors.required" class="text-danger">
+                                email is required
+                            </div>
+                            <div *ngIf="signupForm.controls['email'].errors.email" class="text-danger">
+                                invalid email
+                            </div>
+                        </div>
+
+
+
+                        <input type="password" class="form-control mt-1" placeholder="password" formControlName="password">
+                        <div *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched) ">
+                            <div *ngIf="signupForm.controls['password'].errors.required" class="text-danger">
+                                password is required
+                            </div>
+                            <div *ngIf="signupForm.controls['password'].errors.pattern" class="text-danger">
+                                Password must contain more than 8 characters ,Less than 20 characters, 1 numeric, 1 upper case letter, and 1 special character($@$!%*?&).
+                            </div>
+                        </div>
+
+
+                        <input type="text" class="form-control mt-1" placeholder="CIN" formControlName="cin">
+                        <div *ngIf="signupForm.controls['cin'].invalid && (signupForm.controls['cin'].dirty || signupForm.controls['cin'].touched) ">
+                            <div *ngIf="signupForm.controls['cin'].errors.required" class="text-danger">
+                                CIN is required
+                            </div>
+                            <div *ngIf="signupForm.controls['cin'].errors.pattern" class="text-danger">
+                                CIN must contain 8 number .
+                            </div>
+                        </div>
+
+
+                        <input type="tel" class="form-control mt-1" placeholder="tel" formControlName="tel">
+                        <div *ngIf="signupForm.controls['tel'].invalid && (signupForm.controls['tel'].dirty || signupForm.controls['tel'].touched) ">
+                            <div *ngIf="signupForm.controls['tel'].errors.required" class="text-danger">
+                                tel is required
+                            </div>
+                            <div *ngIf="signupForm.controls['tel'].errors.pattern" class="text-danger">
+                                tel must contain 8 number .
+                            </div>
+                        </div>
+
+
+                        <div> <img class="avatar" [src]="imagePreview" *ngIf="imagePreview" height="200px" width="200px">
+                        </div>
+                        <button type="button" class="counter_form_button" (click)="filePicker.click()">Select image</button>
+
+                        <button type="submit" class="counter_form_button " (click)="signup(this.signupForm.value)">SignUp</button>
+                        <div class="mb-3" style="visibility: hidden;">
+                            <input type="file" class="form-control" (change)='onImageSelected($event)' #filePicker>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

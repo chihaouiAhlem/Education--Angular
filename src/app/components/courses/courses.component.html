@@ -1,0 +1,49 @@
+<!-- tous les cours illi ytkawnou mn cour  -->
+<h1>{{title}}</h1>
+
+<!-- <app-search-section></app-search-section> -->
+<div class="courses">
+    <div class="section_background parallax-window" data-parallax="scroll" data-image-src="assets/images/courses_background.jpg" data-speed="0.8"></div>
+    <div class="container searchSmall">
+
+        <form name="formgg" (ngSubmit)="searchForm.form.valid && searchScore(obj.score)" #searchForm="ngForm">
+
+            <div class="form-group">
+                <input type="number" class="form-control" name="priceMin" [(ngModel)]="obj.priceMin" #score="ngModel" />
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" name="priceMax" [(ngModel)]="obj.priceMax" #score="ngModel" />
+            </div>
+
+
+
+            <div class="form-group">
+                <button class="btn btn-primary">search courses </button>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <app-banner [childVariables]="parentVariables"></app-banner>
+
+        <div class="row courses_row">
+
+            <!-- Course -->
+            <div class="col-lg-4 course_col" *ngFor="let c of courses | paginate:{itemsPerPage: 3, currentPage:p}">
+                <app-cour [x]="c"></app-cour>
+            </div>
+
+
+
+            <!-- Course -->
+
+
+            <!-- Course -->
+
+
+        </div>
+
+    </div>
+</div>
+<div id="pagination" class="container">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>

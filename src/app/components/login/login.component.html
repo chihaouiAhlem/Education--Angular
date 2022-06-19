@@ -1,0 +1,88 @@
+<div class=" home">
+    <div class="counter_background" style="background-image:url(assets/images/counter_background.jpg)"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="counter_content">
+                    <h2 class="counter_title">Login Now</h2>
+                    <div class="counter_text">
+
+
+                        <p> Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dumy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        </p>
+                    </div>
+                    <!-- Milestones -->
+
+                    <div class="milestones d-flex flex-md-row flex-column align-items-center justify-content-between">
+
+                        <!-- Milestone -->
+                        <div class="milestone">
+                            <div class="milestone_counter" data-end-value="15">0</div>
+                            <div class="milestone_text">years</div>
+                        </div>
+
+                        <!-- Milestone -->
+                        <div class="milestone">
+                            <div class="milestone_counter" data-end-value="120" data-sign-after="k">0</div>
+                            <div class="milestone_text">years</div>
+                        </div>
+
+                        <!-- Milestone -->
+                        <div class="milestone">
+                            <div class="milestone_counter" data-end-value="670" data-sign-after="+">0</div>
+                            <div class="milestone_text">years</div>
+                        </div>
+
+                        <!-- Milestone -->
+                        <div class="milestone">
+                            <div class="milestone_counter" data-end-value="320">0</div>
+                            <div class="milestone_text">years</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="counter_form mt-5">
+            <div class="row fill_height">
+                <div class="col fill_height">
+
+                    <form class="counter_form_content d-flex flex-column align-items-center justify-content-center " (ngSubmit)="loginForm.form.valid && login()" #loginForm="ngForm">
+                        <div class="counter_form_title">Login now</div>
+
+
+                        <input type="text" placeholder="CIN" class="counter_input " name="cin" [(ngModel)]="user.cin" #cin="ngModel" [ngClass]="{ 'is-invalid': loginForm.submitted &&
+                            cin.invalid }" required pattern="^(?=.*[0-9]).{8}$" />
+                        <div *ngIf="loginForm.submitted && cin.invalid" class="text-danger">
+                            <div *ngIf="cin.errors.required">CIN is required
+                            </div>
+                            <div *ngIf="cin.errors.pattern"> must be 8 number</div>
+                            <!-- <div *ngIf="cin.errors.maxlenth"> Password must be 8 characters</div> -->
+
+                        </div>
+
+
+
+                        <input type="password" placeholder="password" class="counter_input " [(ngModel)]="user.password " name="password" #password="ngModel" [ngClass]="{ 'is-invalid': loginForm.submitted &&
+                            password.invalid }" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{6,12}$">
+                        <div *ngIf="loginForm.submitted && password.invalid" class="text-danger">
+                            <div *ngIf="password.errors.required"> Password is required
+                            </div>
+                            <div *ngIf="password.errors.pattern"> Password must contain more than 6 characters ,Less than 12 characters, 1 numeric, 1 upper case letter, and 1 special character($@$!%*?&).
+                            </div>
+                        </div>
+
+
+                        <button type="submit" class="counter_form_button">login</button>
+                        <div class="text-danger">{{message}}</div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="courses">
+    <div class="section_background parallax-window" data-parallax="scroll" data-image-src="assets/images/courses_background.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <app-banner [childVariables]="parentVariables"></app-banner>
+        <div class="row courses_row">
+
+            <!-- Course -->
+            <div class="col-lg-6 course_col" *ngFor="let m of coursPromo">
+                <app-cour [x]="m"></app-cour>
+            </div>
+
+
+
+            <!-- Course -->
+
+
+            <!-- Course -->
+
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="courses_button trans_200"><a routerLink="/courses">view all courses</a></div>
+            </div>
+        </div>
+    </div>
+</div>

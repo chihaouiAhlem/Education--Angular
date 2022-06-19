@@ -1,0 +1,143 @@
+<!-- <div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-9 mx-auto text-center">
+                <h1 class="text-white">Search</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form [formGroup]="searchForm">
+                    <div class="form-group">
+                        <label>Search  Weather API </label>
+                        <input type="text" placeholder="city" class="form-control" formControlName="ville" />
+                        <div *ngIf="(searchForm.controls['ville'].invalid) && (searchForm.controls['ville'].dirty || searchForm.controls['ville'].touched) ">
+                            <div *ngIf="searchForm.controls['ville'].errors.required" class="text-danger">
+                                last Name is required
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary py-3 px-5" value="Search" (click)="search()">
+                    </div>
+
+
+                </form>
+
+                <div *ngIf="resultWeather">
+
+                    <div>Weather:<img [src]="path"></div>
+                    <div class="text-danger">temperature:{{resultWeather.temp}}</div>
+                    <div class="text-danger">pressure:{{resultWeather.pressure}}</div>
+                    <div class="text-danger">Humidity:{{resultWeather.humidity}}</div>
+                    <div class="text-danger">City:{{resultWeather.country}}</div>
+                    <div class="text-danger">Wind:{{resultWeather.wind}}</div>
+                </div>
+
+                <div class="col-4">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<body>
+
+    <div class="container">
+        <div class="current-info">
+
+            <div class="date-container">
+                <div class="time">
+                    {{myDate| date: 'shortTime'}}
+                </div>
+                <div class="date">
+                    {{myDate| date: 'longDate'}}
+                </div>
+
+
+                <form [formGroup]="searchForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="city" class="others" formControlName="ville" />
+                        <div *ngIf="(searchForm.controls['ville'].invalid) && (searchForm.controls['ville'].dirty || searchForm.controls['ville'].touched) ">
+                            <div *ngIf="searchForm.controls['ville'].errors.required" class="text-danger">
+                                last Name is required
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" style="background-color:orange;" class="btn others py-3 px-5" value="Search" (click)="search()">
+                    </div>
+
+
+                </form>
+
+
+            </div>
+
+            <div class="place-container">
+                <div class="time-zone"></div>
+                <div class="country">IN</div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="future-forecast">
+        <div class="today">
+            <img *ngIf="resultWeather" [src]="path" class="w-icon">
+
+            <div class="other" *ngIf="resultWeather">
+
+
+                <div>Weather:<img [src]="path"></div>
+                <div class="temp">Temperature:{{resultWeather.temp}}</div>
+                <div class="temp">Pressure:{{resultWeather.pressure}}</div>
+                <div class="temp">Humidity:{{resultWeather.humidity}}</div>
+                <div class="temp">City:{{resultWeather.country}}</div>
+                <div class="temp">Wind:{{resultWeather.wind}}</div>
+
+
+            </div>
+        </div>
+
+        <div class="weather-forecast" *ngIf="!resultWeather">
+            <div class="weather-forecast-item">
+                <div class="day">Tue</div>
+
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
+                <div class="temp">Night - 25.6&#176; C</div>
+                <div class="temp">Day - 35.6&#176; C</div>
+            </div>
+
+            <div class="weather-forecast-item">
+                <div class="day">Fri</div>
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
+                <div class="temp">Night - 25.6&#176; C</div>
+                <div class="temp">Day - 35.6&#176; C</div>
+            </div>
+            <div class="weather-forecast-item">
+                <div class="day">Sat</div>
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
+                <div class="temp">Night - 25.6&#176; C</div>
+                <div class="temp">Day - 35.6&#176; C</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="script.js"></script>
+</body>

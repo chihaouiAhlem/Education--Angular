@@ -1,0 +1,24 @@
+1)
+**recherche courses drop list+++
+*recherche pipe: dans events: selon x ou x et y :undefined null!!!!!!!
+*recherche classique:events admin
+***recherche:(find)
+2)display
+***admin :courses: new compenent 
+                  tutor info le meme compenent que tous (les tutors)
+
+3)update:edit
+4)Users:edit!!
+***dans le meme form que add:events
+****dans un autre form
+!!!!!erreur page home s affiche pas lors je clique plu+ fois
+!!!!!
+5)ngClass:
+6)pipe gender 
+7/recherche pipe dans user teacher:il ya t il une recherche aut sur tt les champs
+9/tutors: div col3 .. info tutor : col-5:dans une fct?? ou class variable? ngclass
+10/admin,teacher dashboared? ou nav++
+11/pagination  admin courses
+pagination angular8:
+https://pkraja121dss.medium.com/create-simple-pagination-in-angular-8-54fe64c20b0a
+

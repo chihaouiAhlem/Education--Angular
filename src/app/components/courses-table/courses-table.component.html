@@ -1,0 +1,105 @@
+<div class="container mt-5">
+    <form id="home_search_form_3" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between" #formSearch="ngForm" (ngSubmit)="search()">
+        <div class="d-flex flex-row align-items-center justify-content-start">
+            <input type="search" disabled class="home_search_input counter_input" placeholder=" Search courses" />
+            <select class="dropdown_item_select home_search_input counter_input" (change)="onChange($event.target.value)" name="d" [(ngModel)]="obj.nameSearch" required>
+                <option selected value="" name="d">Select Courses</option>
+                <option name="d" *ngFor="let name of courses" value="{{ name.coursName }}" name="a">
+                    {{ name.coursName }}
+                </option>
+            </select>
+
+            <select class="dropdown_item_select home_search_input counter_input" name="m" [(ngModel)]="obj.priceSearch">
+                <option selected  value="" >Choose price</option>
+                <option *ngFor="let price of pricesTab " name="l" value="{{ price.coursPrice }}" >
+                    {{ price.coursPrice }}
+                </option>
+            </select>
+        </div>
+        <button type="submit" class="home_search_button">search</button>
+    </form>
+</div>
+<div class="course">
+    <table class="table custom-table">
+        <thead>
+            <tr>
+                <th>id</th>
+
+                <th>Name</th>
+                <th> hours</th>
+                <th>Places</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Tutor</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- t: objet // teams: tableau d objet -->
+            <tr *ngFor="let c of pageOfItems ">
+                <!-- variable {{}} -->
+                <td>{{ c._id }}</td>
+                <td>{{ c.coursName }}</td>
+
+                <td>{{ c.nbrHours }}</td>
+                <td [ngStyle]="{ color: placesStyle(c.coursPlaces) } ">{{ c.coursPlaces }}</td>
+                <td>
+                    <span [ngStyle]="{ color: priceStyle(c.coursPrice) } ">{{ c.coursPrice }}</span>
+                </td>
+                <td> {{c.coursDate | date:'medium'}}</td>
+                <td> <button class="btn btn-light ml-2 " (click)="displayTutor(c.idProf)">{{newTab.firstName}}.{{newTab.lastName}}</button>
+                </td>
+
+                <td>
+                    <button class="btn btn-success ml-2 " (click)="goToDisplay(c._id)">
+                        display</button><button class="btn btn-warning ml-2 " (click)="goToEdit(c._id)">
+                        edit</button><button class="btn btn-danger ml-2 " (click)="deleteMatchById(c._id)">delete</button>
+                    <button class="btn btn-info ml-2 " (click)="goToDisplayStdents(c._id)">Students</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <!-- <div id="pagination">
+        <pagination-controls (pageChange)="p=$event"></pagination-controls>
+    </div> -->
+    <div class="card-footer pb-0 pt-3">
+        <jw-pagination [pageSize]="2" [items]="courses" (changePage)="onChangePage($event)"></jw-pagination>
+    </div>
+</div>
+<div class="course big-table mt-5">
+
+    <table class="table custom-table " *ngIf="isStudent">
+        <thead>
+            <tr>
+                <th></th>
+                <th>First name</th>
+                <th>Last name</th>
+
+                <!-- <th>pwd</th> -->
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- t: objet // teams: tableau d objet -->
+            <tr *ngFor="let t of students    ">
+
+                <!-- variable {{}} -->
+                <td></td>
+                <td>{{t.firstName}}</td>
+
+
+                <td>{{t.lastName}}</td>
+
+                <!-- <td>{{t.password |custumPassword}}</td> -->
+            </tr>
+
+
+
+        </tbody>
+    </table>
+
+
+</div>
