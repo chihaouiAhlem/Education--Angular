@@ -11,11 +11,7 @@
  /////messagerie sms
  //const twilio = require('twilio');
  const axios = require("axios");
-
- //const twilio = require('twilio');
- //const client = new twilio(accountSid, authToken);
-
- ///nodemailer
+ //nodemailer
  const nodemailer = require("nodemailer");
  ///connexion avec mongoDB name  anonymousDB
  mongoose.connect('mongodb://localhost:27017/educDB');
@@ -44,30 +40,6 @@
      next();
  });
 
- let allevents = [
-     { id: 1, eventName: "robotique", eventDate: '2022-09-21', hoursStart: "08:00", hoursEnd: "11:30", eventDescription: "CLub robotique", eventPlace: "cyte oLYmpique", eventPrice: 1905 }, //t
-     { id: 2, eventName: "android", eventDate: '2022-03-04', hoursStart: "17:00", hoursEnd: "20:30", eventDescription: "CLub android", eventPlace: "tunis", eventPrice: 20 }, //t
-     { id: 3, eventName: "programmation", eventDate: '2022-02-27', hoursStart: "09:00", hoursEnd: "10:30", eventDescription: "CLub c sharp", eventPlace: "Sfax", eventPrice: 5 }, //t
-     { id: 4, eventName: "programmation", eventDate: '2022-05-30', hoursStart: "20:00", hoursEnd: "21:30", eventDescription: "CLub COM", eventPlace: "Monastir", eventPrice: 1000 }, //t
- ];
- /////////
- let allTutors = [
-     { id: 1, firstName: "Ali", role: "tutor", status: "ok", gender: "male", lastName: "memni", speciality: "infographie", adress: "sousse", cin: "01231234", email: "ch@steners.com", password: "12312312@A" }, //t
-     { id: 2, firstName: "marwa", role: "tutor", status: "ok", gender: "female", lastName: "gbri", speciality: "programmation", adress: "tunis", cin: "01222222", email: "hgghj@get.com", password: "12888@99" }, //t
-     { id: 3, firstName: "aml", role: "tutor", status: "notOk", gender: "female", lastName: "pml", speciality: "php", adress: "kairo", cin: "12345678", email: "ch@pmllkk.com", password: "123456789@A" }, //t
-     { id: 4, firstName: "kml", role: "tutor", status: "ok", gender: "male", lastName: "fejri", speciality: "android", adress: "bizerte", cin: "12345678", email: "chpp@pmp.com", password: "12345678" }, //t
-     { id: 5, firstName: "maram", role: "tutor", status: "ok", gender: "female", lastName: "tounsii", speciality: "php5", adress: "kairouan", cin: "01234567", email: "ch@geners.com", password: "12345678@.l" }, //t
- ];
- //////
- let allUsers = [
-     { id: 1, firstName: "Ali", role: "tutor", status: "ok", gender: "male", lastName: "memni", speciality: "infographie", adress: "sousse", cin: "01231234", email: "ch@steners.com", password: "12312312@A" }, //t
-     { id: 2, firstName: "marwa", role: "tutor", status: "ok", gender: "female", lastName: "gbri", speciality: "programmation", adress: "tunis", cin: "01222222", email: "hgghj@get.com", password: "12888@99" }, //t
-     { id: 3, firstName: "aml", role: "tutor", status: "notOk", gender: "female", lastName: "pml", speciality: "php", adress: "kairo", cin: "12345678", email: "ch@pmlkk.com", password: "123456789@A" }, //t
-     { id: 4, firstName: "kml", role: "tutor", status: "ok", gender: "male", lastName: "fejri", speciality: "android", adress: "bizerte", cin: "12345678", email: "chpp@pmp.com", password: "12345678" }, //t
-     { id: 5, firstName: "maram", role: "tutor", status: "ok", gender: "female", lastName: "tounsii", speciality: "php5", adress: "kairouan", cin: "01234567", email: "ch@geners.com", password: "12345678@.l" }, //t
-     { id: 6, firstName: "alia", role: "student", status: "notok", gender: "female", lastName: "omrani", adress: "kairouan", cin: "01233567", email: "ch@55rs.com", password: "18845678@.l" }, //t
-     { id: 7, firstName: "mahmoud", role: "student", status: "ok", gender: "male", lastName: "jaziri", adress: "kairouan", cin: "01235567", email: "ch@geuus.com", password: "123555678@.l" }, //t
- ];
  ////Multer 
  const path = require("path");
  const { ColdObservable } = require("rxjs/internal/testing/ColdObservable");
@@ -350,7 +322,7 @@
          host: 'smtp.gmail.com',
          port: '587',
          auth: {
-             user: 'chihaoui.ahlem@gmail.com',
+             user: 'chihaoui.ahlem@gmail.com', //mon mail
              pass: 'guuztrocdxjuoejq'
          },
          secureConnection: 'false',

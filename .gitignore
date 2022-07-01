@@ -10,7 +10,7 @@
 # dependencies
 /node_modules
 
-app.js/
+
 
 # profiling files
 chrome-profiler-events*.json
