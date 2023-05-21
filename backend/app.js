@@ -40,6 +40,10 @@
      next();
  });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5e4b31375a74bc7354999154d337a5d063170c86
  ////Multer 
  const path = require("path");
  const { ColdObservable } = require("rxjs/internal/testing/ColdObservable");
@@ -791,3 +795,4 @@
  });
 
  module.exports = app; ///rendre app importable:st7a99ineh fi sever .js
+ //etape suivante: travailler avec la notion de agregate pour les relations entre les collections
