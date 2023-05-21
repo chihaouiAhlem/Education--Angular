@@ -15,46 +15,37 @@ export class CoursesComponent implements OnInit {
   obj: any = {};
   title:string;
   searchForm: FormGroup;
-  parentVariables: any = {
-    //// banner
+  parentVariables: any = {  //// banner
     variable1: "Popular Online Courses", //variable pour banner
     variable2: "We put at your disposal courses presented by expert teachers!", // Temp Number
   };
-
+  filteredObjects: Object[];
+    
+  tab:any=[]
   constructor(private coursesService: CoursesService, private router: Router) {}
   connectedUserId: any;
   url: string;
   ngOnInit() {
-    this.connectedUserId = JSON.parse(localStorage.getItem("ConnectedUser")); // variable sabbit fiha tous le contenu de orders
-    this.url = this.router.url;
-    if (this.url == "/mycourses") {
-      ///espace student :cours reservés: 2 search 
-      this.coursesService.getAllReservationsStudent(this.connectedUserId._id).subscribe((response) => {
-          console.log('here into my courses ', response.courses);
-          
-          this.courses = response.courses;
-          this.title=response.title;
-          
-       }); 
-        }
-    else  {
-      this.coursesService.getAllCourses().subscribe((response) => {
-        this.courses = response.courses;
-        // this.title = response.response;
-      });
-    }
+    var langues = navigator.language;
+      console.log("eeeee",langues);//fr-FR
+      if(langues==="fr-FR"){
+        this.coursesService.getAllCourses().subscribe((response) => {
+          this.tab= response.courses;
+          this.filteredObjects= this.tab.filter(object => object.langue === "fr");
 
-    ////display courses of tutor
-    if (this.connectedUserId && this.connectedUserId.role == "tutor") {
-      console.log("log", this.connectedUserId._id);
-      this.coursesService
-        .getAllCoursesByProf(this.connectedUserId._id)
-        .subscribe((response) => {
-          this.courses = response.courses;
-          // this.title = response.response;
-        });
-    }
-    
+            // this.title = response.response;
+          });
+      // Filter objects by language
+
+      }
+      else{
+        this.coursesService.getAllCourses().subscribe((response) => {
+          this.tab= response.courses;
+          this.filteredObjects= this.tab.filter(object => object.langue === "en");
+
+            // this.title = response.response;
+          });
+      }
   }
   searchScore() {
     this.coursesService.searchCourse(this.obj).subscribe((data) => {
@@ -64,4 +55,43 @@ export class CoursesComponent implements OnInit {
       // console.log('here data after search');
     });
   }
+
+   
+    
+    // Handle the language selection change event from the language select component
+    onLanguageChanged(language: string) {
+      var langues = navigator.language;
+      console.log("eeeee",langues);//fr-FR
+      if (language === 'lg' && langues==="fr-FR"   ) {
+       
+        this.coursesService.getAllCourses().subscribe((response) => {
+          this.tab= response.courses;
+          
+            // this.title = response.response;
+          });
+          this.filteredObjects= this.tab.filter(object => object.langue === "fr");
+      // Filter objects by language
+      }
+           
+  else  if (language === 'all'  ) {
+    // Show all objects
+    this.coursesService.getAllCourses().subscribe((response) => {
+      this.filteredObjects= response.courses;
+        // this.title = response.response;
+      });
+   // this.filteredObjects = this.objects;
+    } 
+    else  {
+      this.coursesService.getAllCourses().subscribe((response) => {
+        this.tab= response.courses;
+        
+          // this.title = response.response;
+        });
+        this.filteredObjects= this.tab.filter(object => object.langue === language);
+    // Filter objects by language
+    }
+    }
+    
+
+  
 }

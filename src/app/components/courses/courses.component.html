@@ -25,25 +25,23 @@
     <div class="container">
         <app-banner [childVariables]="parentVariables"></app-banner>
 
-        <div class="row courses_row">
+        <div class="row courses_row" >
 
             <!-- Course -->
-            <div class="col-lg-4 course_col" *ngFor="let c of courses | paginate:{itemsPerPage: 3, currentPage:p}">
+            <div class="col-lg-4 course_col" *ngFor="let c of filteredObjects | paginate:{itemsPerPage: 3, currentPage:p}">
                 <app-cour [x]="c"></app-cour>
             </div>
 
 
-
-            <!-- Course -->
-
-
-            <!-- Course -->
-
-
         </div>
+       
 
     </div>
 </div>
 <div id="pagination" class="container">
     <pagination-controls (pageChange)="p=$event"></pagination-controls>
 </div>
+
+<div>
+    <app-search-result [objects]="objects" (languageChanged)="onLanguageChanged($event)"></app-search-result>
+       </div>

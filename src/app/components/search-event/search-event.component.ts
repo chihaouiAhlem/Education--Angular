@@ -15,7 +15,7 @@ export class SearchEventComponent implements OnInit {
   ngOnInit() {
   }
   searchEvent(){
-    ///search et affichage dns une autre page
+    ///search et affichage ens une autre page
     //alert(this.obj);
     localStorage.setItem(("objectSearch"),JSON.stringify(this.obj));
     this.router.navigate(["searchEvent"]);

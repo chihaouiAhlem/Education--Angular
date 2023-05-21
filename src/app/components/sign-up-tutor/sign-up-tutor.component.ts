@@ -114,7 +114,8 @@ this.title="edit";
         //sinon navigate to home
         this.router.navigate(['']);
       }
-    });}
+    });
+  }
   }
   passStyle(id) {
     if (id) {

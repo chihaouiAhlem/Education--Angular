@@ -51,6 +51,8 @@ import { JwPaginationModule } from 'jw-angular-pagination';
 import { PasswordComponent } from './components/password/password.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { WeatherSearchComponent } from './components/weather-search/weather-search.component';
+import { SearchSelectComponent } from './search-select/search-select.component';
+import { SearchResultComponent } from './components/search-result/search-result.component';
 
 
 @NgModule({
@@ -99,6 +101,8 @@ import { WeatherSearchComponent } from './components/weather-search/weather-sear
     PasswordComponent,
     ContactComponent,
     WeatherSearchComponent,
+    SearchSelectComponent,
+    SearchResultComponent,
     
   ],
   imports: [
